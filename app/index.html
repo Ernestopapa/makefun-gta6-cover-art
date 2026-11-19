@@ -3,20 +3,96 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cover Snap</title>
+<title>Cover Press — neon-sunset cover maker</title>
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <main class="app">
-  <section class="controls">
-    <h1>Cover Snap</h1>
-    <p>A photo and a caption, made into a square cover.</p>
-    <label>Photo <input id="photo" type="file" accept="image/*"></label>
-    <label>Caption <input id="caption" type="text" maxlength="40" value="Sunset Heist"></label>
-    <button id="export" type="button">Export PNG 1080 x 1080</button>
-    <p id="status" role="status"></p>
+  <section class="controls" aria-label="Cover controls">
+    <h1>Cover Press</h1>
+    <p class="tagline">Turn a photo into a neon-sunset cover. Everything runs offline, on your machine.</p>
+
+    <fieldset>
+      <legend>Layout</legend>
+      <div class="choices">
+        <label><input type="radio" name="layout" value="single" checked> Single</label>
+        <label><input type="radio" name="layout" value="panels2"> Two panels</label>
+        <label><input type="radio" name="layout" value="grid4"> Four grid</label>
+        <label><input type="radio" name="layout" value="hero3"> Hero + three</label>
+        <label><input type="radio" name="layout" value="fullbleed"> Full bleed</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Photo for panel <span id="panel-name">1</span></legend>
+      <div class="choices" id="panel-tabs" role="group" aria-label="Choose a panel to edit"></div>
+      <div class="choices">
+        <button id="sample-pier" type="button">Pier photo</button>
+        <button id="sample-boulevard" type="button">Boulevard photo</button>
+      </div>
+      <label class="upload">Upload a photo <input id="photo" type="file" accept="image/*"></label>
+      <label><span>Zoom <span class="value" id="zoom-val">100%</span></span>
+        <input id="zoom" type="range" min="100" max="300" value="100">
+      </label>
+      <label>Move left / right
+        <input id="dx" type="range" min="-100" max="100" value="0">
+      </label>
+      <label>Move up / down
+        <input id="dy" type="range" min="-100" max="100" value="0">
+      </label>
+      <button id="reset-crop" type="button">Reset this panel&rsquo;s crop</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>Grade</legend>
+      <div class="choices">
+        <label><input type="radio" name="grade" value="sunset" checked> Sunset</label>
+        <label><input type="radio" name="grade" value="neon"> Neon</label>
+        <label><input type="radio" name="grade" value="mono"> Mono</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Caption</legend>
+      <label>Words <input id="caption" type="text" maxlength="40" value="Sunset Heist"></label>
+      <div class="frow">
+        <label>Style
+          <select id="cstyle">
+            <option value="solid">Solid white</option>
+            <option value="outline">Outline</option>
+            <option value="band">Colour band</option>
+          </select>
+        </label>
+        <label>Position
+          <select id="cpos">
+            <option value="top">Top</option>
+            <option value="middle">Middle</option>
+            <option value="bottom" selected>Bottom</option>
+          </select>
+        </label>
+      </div>
+      <label><span>Size <span class="value" id="csize-val">100%</span></span>
+        <input id="csize" type="range" min="60" max="160" value="100">
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Export</legend>
+      <label>Size
+        <select id="export-size">
+          <option value="1080x1080">1080 &times; 1080 (square)</option>
+          <option value="1080x1350">1080 &times; 1350 (portrait)</option>
+          <option value="1920x1080">1920 &times; 1080 (wide)</option>
+        </select>
+      </label>
+      <button id="export" type="button">Export PNG</button>
+      <p id="status" role="status"></p>
+    </fieldset>
   </section>
-  <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
+  <section class="preview">
+    <canvas id="cover" width="1080" height="1080" aria-label="The cover preview. Click a panel to edit it."></canvas>
+    <p class="hint">Click a panel in the preview to edit its photo and crop.</p>
+  </section>
 </main>
 <script type="module" src="./src/main.js"></script>
 </body>
