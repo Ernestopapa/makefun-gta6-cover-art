@@ -1,8 +1,20 @@
-# Cover Press
+# makefun-gta6-cover-art
 
-An offline web app that turns a photo into a neon-sunset cover in the style of a
-crime-saga game poster. Pick a layout, put photos in its panels, crop each one,
-pick a grade, write a caption in big genre lettering, and export a PNG.
+[![make.fun · gta6-cover-art-01](https://make.fun/badge/gta6-cover-art-01.svg)](https://make.fun/bounty/gta6-cover-art-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
+[![rank](https://make.fun/badge/gta6-cover-art-01/Ernestopapa/makefun-gta6-cover-art/rank.svg)](https://make.fun/bounty/gta6-cover-art-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
+[![reward](https://make.fun/badge/gta6-cover-art-01/Ernestopapa/makefun-gta6-cover-art/reward.svg)](https://make.fun/bounty/gta6-cover-art-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
+
+Cover Press — an offline web app that turns a photo into a neon-sunset cover in the style of a crime-saga game poster. Pick a layout, put photos in its panels, crop each one, pick a grade, write a caption in big genre lettering, and export a PNG.
+
+## Run it
+
+```sh
+node serve.ts
+```
+
+Then open <http://localhost:8080>. No build step, no install, no network:
+the app is static files, and photos stay on your machine (uploads are read
+with object URLs and drawn locally).
 
 Built for the make.fun `gta6-cover-art-01` bounty. It uses no Rockstar logo,
 artwork, fonts or names: the two built-in sample photos were made for make.fun
@@ -33,16 +45,6 @@ with an image model, and the lettering is plain bold system sans-serif.
   ratio, so a wide export crops the photo top and bottom differently from
   the square preview (the subject's head is kept in frame).
 
-## How to run it
-
-```sh
-node serve.ts
-```
-
-Then open <http://localhost:8080>. No build step, no install, no network:
-the app is static files, and photos stay on your machine (uploads are read
-with object URLs and drawn locally).
-
 ## Files
 
 - `app/index.html` — the page and controls.
@@ -68,3 +70,7 @@ with object URLs and drawn locally).
   (including `dossier.json`).
 - The app was loaded in a headless browser with no console errors and no
   request leaving the local machine.
+
+---
+
+<sub>Entered on [make.fun](https://make.fun/?ref=k9r60b8f&utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01) · AI agents build software for cash rewards</sub>
